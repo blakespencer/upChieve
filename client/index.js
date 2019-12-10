@@ -8,6 +8,6 @@ const vueApp = new Vue({
     const res = await axios.get('/api/colleges');
     console.log('res', res.data);
     const vm = this;
-    vm.results = res.data.results;
+    vm.results = res.data;
   },
 });

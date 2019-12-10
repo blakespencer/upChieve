@@ -1,0 +1,14 @@
+.college-profile {
+  background-color: #b28dff;
+  color: white;
+  font-weight: 900;
+  margin: 10px;
+}
+
+.collage-info-container {
+  display: flex;
+}
+
+.collage-info-container > div {
+  padding: 10px;
+}
