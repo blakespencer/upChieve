@@ -13,6 +13,11 @@
   <body>
     <div id="vapp">
       <p>{{ display }}</p>
+      <select v-model="selected" @change="onChange($event)">
+        <option disabled value="">PLEASE SELECT HOW TO SORT</option>
+        <option value="alphabet">Alphabetically</option>
+        <option value="student">Student Enrollment Size</option>
+      </select>
       <div v-for="college in results" class="college-profile">
         <div class="collage-info-container">
           <div>Name:</div>
