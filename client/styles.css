@@ -1,6 +1,18 @@
+div {
+  cursor: default;
+}
+
+select {
+  cursor: pointer;
+}
+
 .page-container {
   display: flex;
   justify-content: center;
+}
+
+.clickable {
+  cursor: pointer;
 }
 
 .page-container > div {

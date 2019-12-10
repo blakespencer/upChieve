@@ -5,11 +5,14 @@ const vueApp = new Vue({
     results: [],
     selected: '',
     page: 0,
+    maxPage: 0,
   },
   async mounted() {
     const vm = this;
     const res = await axios.get(`/api/colleges?page=${vm.page}`);
-    vm.results = res.data;
+    vm.results = res.data.results;
+    vm.maxPage =
+      Math.ceil(res.data.metadata.total / res.data.metadata.per_page) - 1;
   },
   methods: {
     onChange(event) {
@@ -43,16 +46,16 @@ const vueApp = new Vue({
     async changePage(isInc) {
       const vm = this;
       try {
-        if (isInc) {
+        if (isInc && vm.page != vm.maxPage) {
           const page = vm.page + 1;
           const newResults = await axios.get(`/api/colleges?page=${page}`);
-          vm.results = newResults.data;
+          vm.results = newResults.data.results;
           vm.selected = '';
           vm.page++;
-        } else if (vm.page > 0) {
+        } else if (!isInc && vm.page > 0) {
           const page = vm.page - 1;
           const newResults = await axios.get(`/api/colleges?page=${page}`);
-          vm.results = newResults.data;
+          vm.results = newResults.data.results;
           vm.selected = '';
           vm.page--;
         }
