@@ -46,7 +46,7 @@ const vueApp = new Vue({
     async changePage(isInc) {
       const vm = this;
       try {
-        if (isInc && vm.page != vm.maxPage) {
+        if (isInc && vm.page < vm.maxPage) {
           const page = vm.page + 1;
           const newResults = await axios.get(`/api/colleges?page=${page}`);
           vm.results = newResults.data.results;
