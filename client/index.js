@@ -4,10 +4,11 @@ const vueApp = new Vue({
     display: 'Hello World',
     results: [],
     selected: '',
+    page: 0,
   },
   async mounted() {
-    const res = await axios.get('/api/colleges');
     const vm = this;
+    const res = await axios.get(`/api/colleges?page=${vm.page}`);
     vm.results = res.data;
   },
   methods: {
@@ -38,6 +39,26 @@ const vueApp = new Vue({
         (a, b) => b['latest.student.size'] - a['latest.student.size']
       );
       return sorted;
+    },
+    async changePage(isInc) {
+      const vm = this;
+      try {
+        if (isInc) {
+          const page = vm.page + 1;
+          const newResults = await axios.get(`/api/colleges?page=${page}`);
+          vm.results = newResults.data;
+          vm.selected = '';
+          vm.page++;
+        } else if (vm.page > 0) {
+          const page = vm.page - 1;
+          const newResults = await axios.get(`/api/colleges?page=${page}`);
+          vm.results = newResults.data;
+          vm.selected = '';
+          vm.page--;
+        }
+      } catch (err) {
+        console.error(err);
+      }
     },
   },
 });
