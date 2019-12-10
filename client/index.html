@@ -1,11 +1,7 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <html class="no-js">
-  <!--<![endif]-->
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -19,14 +15,5 @@
       <p>{{ display }}</p>
     </div>
     <script src="/index.js" async defer></script>
-
-    <script>
-      const vueApp = new Vue({
-        el: '#vapp',
-        data: {
-          display: 'Hello World',
-        },
-      });
-    </script>
   </body>
 </html>
